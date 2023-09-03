@@ -6,9 +6,10 @@
     <h1>Sightseeing Places</h1><br><br>
     <div style=" display: grid;grid-template-columns: repeat(3,1fr);">
         {%for proj in projects%}
-        <div style="height:200px; width:400px; margin:20px; padding:20px; border:rgb(187, 137, 166) solid 1px;border-radius: 2px;">
-                <p style="color:rgb(83, 51,83)">{{proj.name}}</p><br>
-                <a href="{% url 'project-detail' slug=proj.slug %}">view</a><br>
+        <div style="height:auto; width:450px; margin:20px; padding:20px; border:grey solid 1px;border-radius: 2px;">
+            <img style="width: auto;height: 200px;" src='{{proj.image.url}}'/><br>   
+            <p style="color:rgb(68, 67, 68)">{{proj.name}}</p>
+                <a style="color:rgb(68, 67, 68)" href="{% url 'project-detail' slug=proj.slug %}">view</a><br>
             </div> 
         {%endfor%}
     </div>

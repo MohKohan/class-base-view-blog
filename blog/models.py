@@ -23,6 +23,7 @@ class Category(BaseModel):
 class SightseeingPlaces(BaseModel):
     name = models.CharField(max_length=100)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
+    image = models.ImageField(blank=True,null=True,upload_to="images/")
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     slug = models.SlugField(max_length=100,null=True)
     country = models.CharField(max_length=100,blank=True)
