@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import (
 )
 from django.urls import re_path
 from rest_framework import permissions
+from rest_framework.routers import DefaultRouter
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -31,7 +32,7 @@ urlpatterns=[
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     
-    path('api/',sightseeingPlacesViewSet.as_view({'get':'list'}),name="sight-api"),
+    
     path('',project.as_view(),name="projects"),
     path('<slug:slug>/',projectDetail.as_view(),name="project-detail"),
 
@@ -42,6 +43,9 @@ urlpatterns=[
     
 
 ]
+router=DefaultRouter()
+router.register(r'api/project',sightseeingPlacesViewSet)
+urlpatterns += router.urls
 
 
 
